@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class StepTracker {
     Scanner scanner;
     int goalByStepsPerDay = 10000;
-    Converter conv = new Converter();
+    Converter converter = new Converter();
     MonthData[] monthToData = new MonthData[12];
-    StepTracker(Scanner scan){
+
+    StepTracker(Scanner scan) {
         scanner = scan;
         for (int i = 0; i < monthToData.length; i++) {
             monthToData[i] = new MonthData();
@@ -15,7 +16,7 @@ public class StepTracker {
     void addNewNumberStepsPerDay(Scanner scanner){ //Заполнение статистики шагов
         System.out.println("Введите номер месяца от 1 до 12 (включительно)");
         int month = scanner.nextInt();
-        if(1 <= month && month <= 12) {
+        if (1 <= month && month <= 12) {
             System.out.println("Введите день от 1 до 30 (включительно)");
             int day = scanner.nextInt();
             if (1 <= day && day <= 30) {
@@ -54,14 +55,14 @@ public class StepTracker {
         if (1 <= month && month <= 12){
             MonthData monthData = monthToData[month - 1];
             int sumSteps = monthData.sumStepsFromMonth();
-           for (int i = 0; i < monthData.days.length; i++){
+            for (int i = 0; i < monthData.days.length; i++){
                System.out.println("День "+ (i + 1) + ". Пройдено " + monthData.days[i] + " шагов.");
            }
            System.out.println("Общее количество шагов за месяц: " + sumSteps);
            System.out.println("Максимальное количество шагов в день: " + monthData.maxSteps());
            System.out.println("Среднее количество шагов: " + sumSteps/monthData.days.length);
-           System.out.println("Пройдено километров: " + conv.convertToKm(sumSteps));
-           System.out.println("Сожжено Ккал: " + conv.convertStepsToKilocalories(sumSteps));
+           System.out.println("Пройдено километров: " + converter.convertToKm(sumSteps));
+           System.out.println("Сожжено Ккал: " + converter.convertStepsToKilocalories(sumSteps));
            System.out.println("Лучшая серия: " + monthData.bestSeries(goalByStepsPerDay));
            System.out.println();
         } else {

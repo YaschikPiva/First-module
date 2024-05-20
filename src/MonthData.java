@@ -9,8 +9,8 @@ public class MonthData {
 
     int sumStepsFromMonth(){ //Сумма шагов за месяц
         int sumSteps = 0;
-        for (int i = 0; i < days.length; i++){
-            sumSteps = sumSteps + days[i];
+        for (int day : days) {
+            sumSteps = sumSteps + day;
         }
         return sumSteps;
     }

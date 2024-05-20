@@ -3,16 +3,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-        StepTracker Track = new StepTracker(scanner);// создание нового экземпляра
+        StepTracker track = new StepTracker(scanner);// создание нового экземпляра
         while (true) {
             printMenu();
+
             int i = scanner.nextInt();
             if (i == 1) {
-               Track.addNewNumberStepsPerDay(scanner);  //Ввод шагов
+               track.addNewNumberStepsPerDay(scanner);  //Ввод шагов
             } else if (i == 2) {
-                Track.changeStepGoal(scanner);//Изменение цели шагов на день
+                track.changeStepGoal(scanner);//Изменение цели шагов на день
             } else if (i == 3) {
-                Track.printStatistic();//Вывод статистики за определённый месяц
+                track.printStatistic();//Вывод статистики за определённый месяц
             } else if (i == 4) { //Выход
                 System.out.println("Пока!");
                 scanner.close();
